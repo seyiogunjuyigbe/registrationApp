@@ -1,0 +1,96 @@
+<% include ../partials/header %>
+<script src="/js/selectr.js">$('select').selectpicker();</script>
+
+<style>
+ html{
+    scroll-behavior: smooth;
+}
+</style>
+<div class="container">
+<h1>Add a New Member</h1></div>
+<form action="/members/new" method="POST">
+    <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input class="form-control" type="text" id="firstname" name="member[FirstName]" placeholder="First Name">
+    </div>
+    <div class="form-group">
+        <label for="membersurname">Last Name</label>
+        <input class="form-control" id="membersurname" type="text" name="member[LastName]" placeholder="Last Name">
+    </div>
+    
+    
+    <div class="form-group">
+        <label for="PhoneNumber">Phone Number</label>
+        <input class="form-control" id="PhoneNumber" type="tel" name="member[PhoneNumber]" placeholder="Phone Number">
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input class="form-control" type="email" id="email" name="member[Email]" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="DOB">Date of Birth</label>
+        <input class="form-control" type="date" id="DOB" name="member[DateOfBirth]">
+    </div>
+    <div class="form-group">
+        <label for="memberaddress">Address</label>
+        <textarea class="form-control" id="memberaddress" name="member[Address]" placeholder="Your address"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" class="form-control" name="member[Gender]">
+            <option value="">-Please Select-</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <input class="form-control" type="text" name="member[Occupation]" placeholder="Your Occupation">
+    </div>
+    <div class="form-group">
+        <label for="Category">Category</label>
+            <select id="Category" class="form-control" name="member[Category]"> 
+                <option value="">-Please Select-</option>
+                <option value="Member">Member</option>
+                <option value="Worker">Worker</option>
+                <option value="Minister">Minister</option>
+                <option value="Mission Team">Mission Team</option>
+
+            </select>
+            </div>
+    
+    <div class="form-group">
+        <label for="isMarried">Marital Status</label>
+            <select id="isMarried" class="form-control" name="member[maritalStatus]"> 
+                <option value="">-Please Select-</option>
+                <option value="Married">Married</option>
+                <option value="Single">Single</option>
+            </select>
+            </div>
+  
+            <div class="form-group">
+                <input class="form-control" type="submit" value="Add New Member">
+            </div>
+             </form>
+
+             
+         
+                <script>
+ 
+                        $(document).ready(function () {
+             
+                            $("#Category").selectr({
+             
+                                title: "Category",
+             
+                                placeholder: 'Search Category'
+             
+                            });
+             
+                        });
+             
+                    </script>
+                    
+
+<% include ../partials/footer %>

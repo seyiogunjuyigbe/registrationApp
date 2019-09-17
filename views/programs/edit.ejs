@@ -1,0 +1,60 @@
+<% include ../partials/header %>
+<div class="container">
+<h2>Edit details for <%= program.title%></h2>
+</div>
+<form action="/programs/<%= program._id %>?_method=PUT" method="POST">
+
+    <div class="form-group">
+        <label for="program-title">Title</label>
+        <input class="form-control" id="program-title" type="text" name="program[title]" value="<%= program.title %>">
+    </div>
+    <div class="form-group">
+        <label for="program-date">Date</label>
+        <input class="form-control" id="program-date" type="date" name="program[date]" value="<%=program.date %>">
+    </div>
+    
+    <div class="form-group">
+        <label for="program-theme">Theme</label>
+        <input class="form-control" id="program-theme" type="text" name="program[theme]" value="<%=program.theme %>">
+    </div>
+    <div class="form-group">
+        <label for="audience">Audience</label>
+            <select id="audience" class="form-control" name="program[audience]" value="<%= program.audience %>"> 
+                <option value="TARM Ministers">Ministers</option>
+                <option value="Mission Team">Mission Team</option>
+                <option value="Leaders">Leaders</option>
+                <option value="TARM Members">Members</option>
+                <option value="General Meeting">General Meeting/Outreach</option>
+
+
+            </select>
+        </div>
+
+    <div class="form-group">
+        <label for="category">Category of Attendees</label>
+            <select id="category" class="form-control" name="program[category]" value="<%= program.category %>"> 
+                <option value="The Married">Married Only</option>
+                <option value="The Engaged">Single Couples Only</option>
+                <option value="Singles">Singles Only</option>
+                <option value="Mixed">Mixed</option>
+            </select>
+        </div>
+        <div class="form-group">
+                <label for="gendercategory">Category of Attendees</label>
+                    <select id="gendercategory" class="form-control" name="program[gendercategory]" value="<%=program.genderCategory %>"> 
+                        <option value="Male only">Male only</option>
+                        <option value="Female only">Female only</option>
+                        <option value="Mixed">Mixed</option>
+                    </select>
+                </div>
+    <div class="form-group">
+        <label for="program-venue">Venue</label>
+        <input class="form-control" id="program-venue" type="text" name="program[venue]" value="<%=program.venue %>">
+    </div>
+
+    <div class="form-group">
+             <input class="form-control" type="submit" value="Update">
+        </div>
+</form>
+
+<% include ../partials/footer %>

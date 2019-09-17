@@ -1,0 +1,59 @@
+<% include ../partials/header %>
+<h1>List of Attendees for <span style="color: steelblue"> <%= program.title %></span></h1>
+<table class="table table-bordered table-responsive">
+    <thead class="thead-dark">
+      <tr>
+      <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Phone Num</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Married?</th>
+        <th scope="col">With Children?</th>
+        <th scope="col">Number Of Children</th>
+        <th scope="col">Needs Special Accomodation</th>
+        <th scope="col">Price</th>
+        <th scope="col">Acomodation Details</th>
+        <th scope="col">Destination after Meeting</th> 
+        <th scope="col"></th>
+        <th scope="col"></th>
+
+      </tr>   
+    </thead>
+    <tbody>
+          <% program.attendees.forEach(function(attendee){ %> 
+      <tr>
+        
+        <td><%= attendee.FirstName %></td>
+        <td><%= attendee.LastName %></td>
+        <td><%= attendee.PhoneNumber %></td>
+        <td><%= attendee.Email %></td>
+        <td><%= attendee.Address %></td>
+        <td><%= attendee.Gender %></td>
+        <td><%= attendee.isMarried %></td>
+        <td><%= attendee.ifChildren %></td>
+        <td><%= attendee.numberOfChildren %></td>
+        <td><%= attendee.ifSpecialAccomodation %></td>
+        <td><%= attendee.Price %></td>
+        <td><%= attendee.acomodationDetails %></td>
+        <td><%= attendee.Destination %></td>
+        <td><a class="btn btn-sm btn-success" href="/programs/<%=program._id%>/attendees/<%= attendee._id %>/edit">Edit Attendee Details</a></td>
+        <td><a class="btn btn-sm btn-danger" href="/programs/<%=program._id%>/attendees/<%= attendee._id %>/delete">Delete Attendee Details</a></td>
+    
+      </tr>
+
+   
+      <% }) %>
+       </tbody>
+  </table>
+  <div id="collate-div">
+    <a class="btn btn-secondary" href="/programs/<%=program._id%>/attendees/find/PhoneNumber">Get All Phone Numbers</a>
+    <a class="btn btn-secondary" href="/programs/<%=program._id%>/attendees/find/Email">Get All Email Addresses</a>
+    
+    </div>
+
+  <p><a class="btn btn-md btn-secondary" href="/programs/<%=program._id%>/attendees/new">Add New Attendee</a></p>
+  <p><a class="btn btn-sm btn-success" href="">Export Attendance as Excel Sheet</a></p>
+
+<% include ../partials/footer %>

@@ -1,0 +1,50 @@
+<% include ../partials/header %>
+
+<div class="container">
+<h1>List of Programs <span><a href="/programs/new" class="btn btn-secondary btn-md">Add New Program</a></span> </h1>
+<% if (Programs.length == 0){ %>
+  <div class="alert alert-danger" role="alert">
+<p>No Programs found in the database</p></div></div>
+<% } else{ %>
+
+
+ <table class="table table-responsive">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Program Title</th>
+              <th scope="col">Theme</th>
+              <th scope="col">Date</th>
+              <th scope="col">Venue</th>
+              <th scope="col">Category Invited</th>
+              <th scope="col">Gender Category</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+
+
+
+    
+            </tr>   
+          </thead>
+          <tbody>
+   <% Programs.forEach(function(Program)
+{ %>
+       <tr>
+        <td><%= Program.title %></td>
+        <td><%= Program.theme %></td>
+        <td><%= Program.date %></td>
+        <td><%= Program.venue %></td>
+        <td><%= Program.category %></td>
+        <td><%= Program.genderCategory %></td>
+
+        <td><a class="btn btn-sm btn-success" href="/programs/<%=Program._id%>/attendees/new">Add Attendees</a></td>
+        <td><a class="btn btn-sm btn-success" href="/programs/<%=Program._id%>/attendees">View Attendees</a></td>
+        <td><a class="btn btn-sm btn-warning" href="/programs/<%=Program._id%>/edit">Edit Program Details</a></td>
+        <td><a class="btn btn-sm btn-danger" href="/programs/<%=Program._id%>/delete">Delete Program</a></td>
+
+    </tr>
+ <% }) %>
+       </tbody>
+      </table>
+  <% } %>
+<% include ../partials/footer %>

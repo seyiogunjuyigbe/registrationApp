@@ -1,0 +1,59 @@
+<% include ../partials/header %>
+<div class="container">
+<h1>Add a New Program</h1></div>
+<form action="/programs/new" method="POST">
+    <div class="form-group">
+        <label for="program-title">Title</label>
+        <input class="form-control" id="program-title" type="text" name="Program[title]" placeholder="Program Title">
+    </div>
+    <div class="form-group">
+        <label for="program-date">Date</label>
+        <input class="form-control" id="program-date" type="date" name="Program[date]">
+    </div>
+    
+    <div class="form-group">
+        <label for="program-theme">Theme</label>
+        <input class="form-control" id="program-theme" type="text" name="Program[theme]" placeholder="Enter Theme">
+    </div>
+    <div class="form-group">
+        <label for="audience">Audience</label>
+            <select id="audience" class="form-control" name="Program[audience]"> 
+                <option value="TARM Ministers">Ministers</option>
+                <option value="Mission Team">Mission Team</option>
+                <option value="Leaders">Leaders</option>
+                <option value="TARM Members">Members</option>
+                <option value="General Meeting">General Meeting/Outreach</option>
+
+
+            </select>
+        </div>
+
+    <div class="form-group">
+        <label for="category">Category of Attendees</label>
+            <select id="category" class="form-control" name="Program[category]"> 
+                <option value="The Married">Married Only</option>
+                <option value="The Engaged">Single Couples Only</option>
+                <option value="Singles">Singles Only</option>
+                <option value="Mixed">Mixed</option>
+            </select>
+        </div>
+        <div class="form-group">
+                <label for="gendercategory">Category of Attendees</label>
+                    <select id="gendercategory" class="form-control" name="Program[genderCategory]"> 
+                        <option value="Male only">Male only</option>
+                        <option value="Female only">Female only</option>
+                        <option value="Mixed">Mixed</option>
+                    </select>
+                </div>
+    <div class="form-group">
+        <label for="program-venue">Venue</label>
+        <input class="form-control" id="program-venue" type="text" name="Program[venue]" placeholder="Venue">
+    </div>
+    <div class="form-group">
+        <label for="program-"></label>     
+        <input class="form-control" id="program-" type="submit">
+        </div>
+</form>
+
+
+<% include ../partials/footer %>

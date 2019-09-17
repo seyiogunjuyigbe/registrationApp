@@ -1,0 +1,170 @@
+<% include ../partials/header %>
+<style>
+#member-name{
+    text-align: center;
+}
+.btn{
+    margin: 10px;
+    
+   
+}
+table{
+    padding: 5px;
+}
+</style>
+<h2 id="member-name">
+    Membership Data for <span style="color: steelblue;"><%= member.FirstName %> <%= member.LastName %></span>
+</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-sm-5">
+            <table class="table table-dark table-md table-bordered">
+                <tr>
+                    <td>First Name</td>
+                    <td><%= member.FirstName %></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><%= member.LastName %></td>
+                </tr>
+               <tr>
+                    <td> PhoneNumber </td>
+                <td><%= member.PhoneNumber %></td>
+               </tr>
+   <tr>
+        <td> Email Address</td>
+    <td><%= member.Email %></td>
+   </tr>
+   <tr>
+        <td> Date of Birth </td>
+    <td><%= member.DateOfBirth %></td>
+   </tr>
+   <tr>
+        <td> Address </td>
+    <td><%= member.Address %></td>
+   </tr>
+   <tr>
+        <td> Gender </td>
+    <td><%= member.Gender %></td>
+   </tr>
+   <tr>
+        <td> Occupation </td>
+    <td><%= member.Occupation %></td>
+   </tr>
+   <tr>
+    <td> Category </td>
+<td><%= member.Category %></td>
+</tr>
+   <tr>
+        <td> Marital Status </td>
+    <td><%= member.maritalStatus %></td>
+   </tr>
+            </table>
+            <a href="/members/<%=member._id%>/edit" class="btn btn-secondary">Edit Member Details</a>
+            </div>
+         
+
+           </div>
+            <!-- <% if(member.Category.indexOf('Minister')!== -1){ %>
+                <p>A minister</p>
+           <% } %>
+           <% if(member.Category.indexOf('Mission Team')!== -1){ %>
+            <p>Mission Team Members</p>
+       <% } %> -->
+            <a href="/members/<%=member._id%>/spouse/new" id="addSpouse"class="btn btn-success">Add Spouse</a>
+     
+           <% if(member.Spouse.length > 0){ %>
+            <style>
+            #addSpouse{
+                display: none;
+            }
+            </style>
+                                <div class="col-lg-4 col-sm-5">
+                    <section id="spouse-section">  
+                        
+                      <table class="table table-dark table-md table-bordered">
+                          <tr>
+                              <td>First Name</td>
+                              <td><%= member.Spouse[0].FirstName %></td>
+                          </tr>
+                          <tr>
+                              <td>Last Name</td>
+                              <td><%= member.Spouse[0].LastName %></td>
+                          </tr>
+                         <tr>
+                              <td> PhoneNumber </td>
+                          <td><%= member.Spouse[0].PhoneNumber %></td>
+                         </tr>
+             <tr>
+                  <td> Email Address</td>
+              <td><%= member.Spouse[0].Email %></td>
+             </tr>
+             <tr>
+                  <td> Date of Birth </td>
+              <td><%= member.Spouse[0].DateOfBirth %></td>
+             </tr>
+             <tr>
+                  <td> Address </td>
+              <td><%= member.Spouse[0].Address %></td>
+             </tr>
+             <tr>
+                  <td> Gender </td>
+              <td><%= member.Spouse[0].Gender %></td>
+             </tr>
+             <tr>
+                  <td> Occupation </td>
+              <td><%= member.Spouse[0].Occupation %></td>
+             </tr>
+             <tr>
+                  <td> Marital Status </td>
+              <td><%= member.Spouse[0].maritalStatus %></td>
+             </tr>
+                      </table> 
+                      <a href="/members/<%=member._id%>/spouse/<%= member.Spouse[0]._id %>/edit" id="editSpouse"class="btn btn-warning">Edit Spouse Details</a>
+                      <a href="/members/<%=member._id%>/spouse/<%= member.Spouse[0]._id %>/delete" id="deleteSpouse"class="btn btn-danger">Delete Spouse Details</a>
+         
+            <%   } %>
+        </div>
+           <a href="/members/<%=member._id%>/children/new" class="btn btn-success">Add Child</a>  
+                </section>        
+                    </div>
+           
+      </div>
+    </div>
+
+<section id="children-section">
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+           
+            <% member.children.forEach(function(child){ %>
+                <table class="table table-dark table-md table-bordered">
+                    <tr>
+                        <td>First Name</td>
+                        <td><%= child.FirstName %></td>
+                    </tr>
+                    <tr>
+                            <td>Last Name</td>
+                            <td><%= child.LastName %></td>
+                        </tr>
+                        <tr>
+                                <td>Gender</td>
+                                <td><%= child.Gender %></td>
+                            </tr>
+                        <tr>
+                                <td>Date of Birth</td>
+                                <td><%= child.DateOfBirth %></td>
+                            </tr>
+                            
+                </table>
+                <a href="/members/<%=member._id%>/children/<%=child._id%>/edit" class="btn btn-warning">Edit Child Details</a>
+                <a href="/members/<%=member._id%>/children/<%=child._id%>/delete" class="btn btn-danger">Delete Child Details</a>
+
+            <% }) %>
+        </div>
+    </div>
+</div>
+</section>
+
+<% include ../partials/footer %>
