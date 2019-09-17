@@ -1,0 +1,124 @@
+<% include ../partials/header %>
+
+<div class="container">
+
+ <h1>Registration for <span style="color: steelblue"> <%= program.title %></span></h1>   
+<form action="/programs/<%= program._id %>/attendees/new" method="POST">
+    <div class="form-group">
+        <input class="form-control" type="text" name="attendee[FirstName]" placeholder="First Name">
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="text" name="attendee[LastName]" placeholder="Last Name">
+    </div>
+    
+    <div class="form-group">
+        <input class="form-control" type="tel" name="attendee[PhoneNumber]" placeholder="Phone Number">
+    </div>
+    
+    <div class="form-group">
+        <input class="form-control" type="email" name="attendee[Email]" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" name="attendee[Address]" placeholder="Your address"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" class="form-control" name="attendee[Gender]">
+            <option value="">-Please Select-</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+   
+    <div class="form-group">
+        <label for="isMarried">Marital Status</label>
+            <select id="isMarried" class="form-control" name="attendee[isMarried]"> 
+                <option value="">-Please Select-</option>
+                <option value="True">Married</option>
+                <option value="False">Single</option>
+            </select>
+        </div>
+        <% if(program.category == "The Married" || program.category == "Mixed"){ %>
+
+     
+        <div class="form-group">
+                    <label for="ifChildren">Are you here with Children?</label>
+                <select id="ifChildren" class="form-control" name="attendee[ifChildren]">
+                    <option value="">-Please Select-</option>
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+        </div>
+        <div class="form-group">
+            <label for="numberOfChildren">Number Of Children</label>
+                <input class="form-control" id="numberOfChildren" type="number" name="attendee[numberOfChildren]" placeholder="Number Of Children">
+            </div>
+            <% } %>
+            <div class="form-group">
+                    <label for="ifSpecialAccomodation">Do you need Special Accomodation?</label>
+                <select id="ifSpecialAccomodation" class="form-control" name="attendee[ifSpecialAccomodation]">
+                    <option value="">-Please Select-</option>
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+        </div>
+       
+
+        <div class="form-group">
+                <label for="price">Your Budget</label>
+                <input class="form-control" id="price" type="number" name="attendee[Price]" placeholder="Enter Budget">
+                    <!-- <span id="textInput" style="padding: 10px;"></span> -->
+        </div>
+        <div class="form-group">
+                <textarea class="form-control" name="attendee[acomodationDetails]" placeholder="Specify your preferred acomodation details"></textarea>
+            </div>
+        <div class="form-group">
+                    <label for="destination">Your Destination after the Meeting</label>
+                        <input class="form-control" id="destination" type="text" name="attendee[Destination]" placeholder="Enter Destination">
+        </div>
+    <div class="form-group">
+        <button class="btn btn-md btn-success">Register!</button>
+    </div>
+   
+</form>
+
+
+</div>
+<script>
+    
+
+// var ifChildren = document.querySelector("#ifChildren");
+// var numberOfChildren = document.querySelector("#numberOfChildren");
+
+// ifChildren.addEventListener("change", function(){
+//     if(this.value == 'False'){
+//         numberOfChildren.classList.add("")
+//     } else if (this.value == "True") {
+//         numberOfChildren.classList.remove("")
+//             };
+// })
+
+//     var ifSpecialAccomodation = document.querySelector("#ifSpecialAccomodation");
+//     var price = document.querySelector("#price");
+//     var text = document.getElementById('textInput');
+//     price.style.display = "none";
+//     function priceDisplay(price) {
+//         if(ifSpecialAccomodation.value = "True"){
+//             price.style.display = "block"
+//         } else {
+//             price.style.display = "none"
+//         }
+//     }
+//     ifSpecialAccomodation.addEventListener("change", priceDisplay());
+
+//     price.addEventListener("change", function(val){
+//         updateTextInput(this.value);
+//   })
+    
+// function updateTextInput(val) {
+//            text.textContent=val + ' Naira'; 
+//           }
+</script>
+
+<a href="/list" class="btn">Show List</a>
+<% include ../partials/footer %>

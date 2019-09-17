@@ -1,0 +1,84 @@
+<% include ../partials/header %>
+
+<div class="container">
+
+ <h1>Edit Registration for <span style="color: steelblue"> <%= attendee.FirstName %></span></h1>   
+<form action="/programs/<%= program_id %>/attendees/<%= attendee._id %>?_method=PUT" method="POST">
+      <div class="form-group">
+        <input class="form-control" type="text" name="attendee[FirstName]" value="<%= attendee.FirstName %>" >
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="text" name="attendee[LastName]" value="<%= attendee.LastName %>" >
+    </div>
+    
+    <div class="form-group">
+        <input class="form-control" type="tel" name="attendee[PhoneNumber]" value="<%= attendee.PhoneNumber %>" >
+    </div>
+    
+    <div class="form-group">
+        <input class="form-control" type="email" name="attendee[Email]" value="<%= attendee.Email %>" >
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" name="attendee[Address]" value="<%= attendee.Address %>" ></textarea>
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" class="form-control" name="attendee[Gender]" value="<%= attendee.Gender %>">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="isMarried">Marital Status</label>
+            <select id="isMarried" class="form-control" name="attendee[isMarried]" value="<%= attendee.isMarried %>"> 
+                <option value="True">Single</option>
+                <option value="False">Married</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+                    <label for="ifChildren">Are you here with Children?</label>
+                <select id="ifChildren" class="form-control" name="attendee[ifChildren]" value="<%= attendee.ifChildren %>">
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+        </div>
+        <div class="form-group">
+            <label for="numberOfChildren">Number Of Children</label>
+                <input class="form-control" id="numberOfChildren" type="number" name="attendee[numberOfChildren]" value="<%= attendee.numberOfChildren %>" >
+            </div>
+            <div class="form-group">
+                    <label for="ifSpecialAccomodation">Do you need Special Accomodation?</label>
+                <select id="ifSpecialAccomodation" class="form-control" name="attendee[ifSpecialAccomodation]" value="<%= attendee.ifSpecialAccomodation %>">
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+        </div>
+        <% function updateTextInput(val) {
+            document.getElementById('textInput').value=val; 
+          } %>
+
+        <div class="form-group">
+                <label for="price">Your Budget</label>
+                    <input class="form-control" id="price" type="range" min="0" max="50000" name="attendee[Price]" value="<%= attendee.Price %>" onchange="updateTextInput(this.value);" placeholder="Enter Budget">
+                    <span id="textInput"></span>
+        </div>
+        <div class="form-group">
+                <textarea class="form-control" name="attendee[acomodationDetails]"><%= attendee.acomodationDetails %></textarea>
+            </div>
+        <div class="form-group">
+                    <label for="destination">Your Destination after the Meeting</label>
+                        <input class="form-control" id="destination" type="text" name="attendee[Destination]" value="<%= attendee.Destination %>">
+        </div>
+    <div class="form-group">
+        <button class="btn btn-md btn-success">Update!</button>
+    </div>
+   
+</form>
+
+
+</div>
+
+
+<a href="/list" class="btn">Show List</a>
+<% include ../partials/footer %>

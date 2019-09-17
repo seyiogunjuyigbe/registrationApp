@@ -1,0 +1,82 @@
+<% include ../partials/header %>
+
+<div class="container">
+
+
+<h1>List of Members <span><a href="/members/new" class="btn btn-secondary btn-md">Add New Member</a></span> </h1>
+<% if(members.length == 0){ %>
+  <div class="alert alert-danger" role="alert">
+<p>No members in the database</p>
+</div></div>
+<% } 
+else{ %>
+
+ <table class="table table-responsive">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Phone Number</th>
+              <th scope="col">Email Address</th>
+              <th scope="col">Marital Status</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+
+    
+            </tr>   
+          </thead>
+          <tbody>
+   <% members.forEach(function(member)
+{ %>
+    <tr>
+        
+        <td><%= member.FirstName %></td>
+        <td><%= member.LastName %></td>
+        <td><%= member.PhoneNumber %></td>
+        <td><%= member.Email %></td>
+        <td><%= member.maritalStatus %></td>
+        <td><a class="btn btn-sm btn-success" href="/members/<%=member._id%>/children">View More Details</a></td>
+        <td><a class="btn btn-sm btn-danger" href="/members/<%=member._id%>/delete">Delete Member</a></td>
+
+    </tr>
+   
+   <% if (member.maritalStatus == "Married" && member.Spouse.length > 0){ %>
+           
+                <tr>
+                  
+                    <td><%= member.Spouse[0].FirstName %></td>
+                    <td><%= member.Spouse[0].LastName %></td>
+                    <td><%= member.Spouse[0].PhoneNumber %></td>
+                    <td><%= member.Spouse[0].Email %></td>
+                    <td><%= member.Spouse[0].maritalStatus %></td>
+                    <td><a class="btn btn-sm btn-success" href="/members/<%=member._id%>/children">View More Details</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="/members/<%=member._id%>/spouse/<%= member.Spouse[0]._id %>/delete">Delete Member</a></td>
+            
+                </tr>
+        
+     
+   <% } %>
+   <% }) %>
+       </tbody>
+  </table>
+
+<div id="collate-div">
+<a class="btn btn-secondary" href="/members/find/PhoneNumber">Get All Phone Numbers</a>
+<a class="btn btn-secondary" href="/members/find/Email">Get All Email Addresses</a>
+
+</div>
+  
+<% } %>
+<!-- <div id="search-div">
+  <form class="form" action="/members/find" method="GET">
+  <div class="form-group">
+    <label for="query">Collate Every: </label>
+  <select name="query" id="query" class="form-control">
+    <option value="PhoneNumber">Phone Number</option>
+    <option value="Email">Email Address</option>
+    </select>
+  </div>
+  <input class="form-control" type="submit" value="Go!">
+  </form>
+  </div> -->
+<% include ../partials/footer %>

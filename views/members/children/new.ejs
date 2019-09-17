@@ -1,0 +1,33 @@
+<% include ../../partials/header %>
+<h1>Add a New child</h1>
+<form action="/members/<%= member._id %>/children/new" method="POST">
+    <div class="form-group">
+        <input class="form-control" type="text" name="child[FirstName]" placeholder="First Name">
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="childsurname" type="text" name="child[LastName]" value=<%= member.LastName %> readonly>
+    </div>
+    
+  
+    <div class="form-group">
+        <label for="DOB">Date of Birth</label>
+        <input class="form-control" type="date" id="DOB" name="child[DateOfBirth]">
+    </div>
+    
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" class="form-control" name="child[Gender]">
+            <option value="">-Please Select-</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="submit" value="Add Child" id="">
+    </div>
+    
+    </form>
+
+ 
+
+<% include ../../partials/footer %>

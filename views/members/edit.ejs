@@ -1,0 +1,60 @@
+<% include ../partials/header %>
+<style>
+html{
+    scroll-behavior: smooth;
+}
+</style>
+
+<h1>Edit Details for <%= member.FirstName %> <%= member.LastName %></h1>
+<form action="/members/<%= member._id %>?_method=PUT" method="POST">
+    <div class="form-group">
+        <input class="form-control" type="text" name="member[FirstName]" value="<%= member.FirstName %>">
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="membersurname" type="text" name="member[LastName]" value="<%= member.LastName %>">
+    </div>
+    
+    
+    <div class="form-group">
+        <input class="form-control" type="tel" name="member[PhoneNumber]" value="<%= member.PhoneNumber %>">
+    </div>
+    
+    <div class="form-group">
+        <input class="form-control" type="email" name="member[Email]" value="<%= member.Email %>">
+    </div>
+    <div class="form-group">
+        <label for="DOB">Date of Birth</label>
+        <input class="form-control" type="date" id="DOB" name="member[DateOfBirth]" value="<%= member.DateOfBirth %>">
+    </div>
+    <label for="memberaddress">Address</label>
+    <div class="form-group">
+        <textarea class="form-control" id="memberaddress" name="member[Address]"><%= member.Address %></textarea>
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" class="form-control" name="member[Gender]">
+            <option value="">-Please Select-</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <input class="form-control" type="text" name="member[Occupation]" value="<%= member.Occupation %>">
+    </div>
+    
+    <div class="form-group">
+        <label for="isMarried">Marital Status</label>
+            <select id="isMarried" class="form-control" name="member[maritalStatus]" value="<%= member.maritalStatus %>"> 
+                <option value="">-Please Select-</option>
+                <option value="Married">Married</option>
+                <option value="Single">Single</option>
+            </select>
+            </div>
+  
+            <div class="form-group">
+                <input class="form-control" type="submit" value="Add New Member">
+            </div>
+             </form>
+
+<% include ../partials/footer %>

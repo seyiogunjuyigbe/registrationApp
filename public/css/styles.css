@@ -1,0 +1,10 @@
+form .form-control{
+    width: 60%;
+}
+form, a{
+    margin-left: 10%;
+    padding: 0 auto;
+}
+td, thead{
+    white-space: nowrap;
+}

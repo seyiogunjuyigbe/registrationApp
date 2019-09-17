@@ -1,0 +1,107 @@
+<% include ../partials/header %>
+<style>
+    html{
+        scroll-behavior: smooth;
+    }
+#mailform, #smsform{
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+    display: none;
+}
+.list-group{
+    width: 40%;
+}
+</style>
+
+
+<div class="container">
+<% if(query == 'PhoneNumber'){ %>
+   <h2>All Phone Numbers </h2> 
+<% } else if (query == 'Email'){ %>
+    <h2>All Email Addresses</h2> 
+<% } %>
+<ul class="list-group">
+
+   <% results.forEach(function(result){ %>
+    <li class="list-group-item"><%= result %></li>
+<% }) %> 
+</ul></div>
+<div style="margin-top: 10px;">
+  <% if(query == 'PhoneNumber'){ %>
+    <a class="btn btn-secondary"id="sendsms" href="#smsform">Send Bulk SMS to all numbers</a>
+        <div id="smsform">
+                <h3 style="margin-left:2em;">Send SMS</h3>
+             <form class="form" action="/members/all/bulksms" method="GET">
+                 <div class="form-group">
+                 <label for="subject">Subject</label>
+                 <input class="form-control" type="text" name="subject" id="subject" placeholder="Subject">
+                 <label for="recipients">Recipients</label>
+                 <textarea class="form-control" name="recipients" id="recipients"><%= String(results)%></textarea>
+             </div>
+             <div class="form-group">
+              <label for="body">Message</label>
+                  <textarea class="form-control" name="message" id="body" rows="10" placeholder="Type message here..."></textarea>
+              
+             </div>
+                <div class="form-group">
+             <input class="form-control btn-success" type="submit" value="Send">
+               </div>  
+             </form>
+             </div>
+             <script>
+             var smsBtn = document.querySelector("#sendsms");
+var smsDiv = document.querySelector("#smsform");
+smsDiv.style.display = "none";
+smsBtn.addEventListener("click", function(){
+    if(smsDiv.style.display == "none"){
+        smsDiv.style.display = "block";
+    } else {
+        smsDiv.style.display = "none";
+    }
+})
+             </script>
+<% } else if (query == 'Email'){ %>
+    <a id="sendmail" href="#mailform" class="btn btn-secondary">Send Email to all</a>
+    <div id="mailform">
+            <h3 style="margin-left:2em;">Send Mail</h3>
+         <form class="form" action="/members/all/bulkmail" method="GET">
+             <div class="form-group">
+             <label for="subject">Subject</label>
+             <input class="form-control" type="text" name="subject" id="subject" placeholder="Subject">
+             <label for="recipients">Recipients</label>
+             <textarea class="form-control" name="recipients" id="recipients"><%= String(results)%></textarea>
+         </div>
+         <div class="form-group">
+          <label for="body">Message</label>
+              <textarea class="form-control" name="message" id="body" rows="10" placeholder="Type message here..."></textarea>
+          
+         </div>
+            <div class="form-group">
+         <input class="form-control btn-success" type="submit" value="Send">
+           </div>  
+         </form>
+         </div>
+    <% } %>  
+</div>
+
+
+
+
+<script>
+var mailBtn = document.querySelector("#sendmail");
+var mailDiv = document.querySelector("#mailform");
+mailDiv.style.display = "none";
+mailBtn.addEventListener("click", function(){
+    if(mailDiv.style.display == "none"){
+        mailDiv.style.display = "block";
+    } else {
+        mailDiv.style.display = "none";
+    }
+});
+
+</script>
+
+
+<% include ../partials/footer %>
